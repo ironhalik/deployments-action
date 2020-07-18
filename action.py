@@ -11,7 +11,7 @@ def main():
     deployment = create_deployment(
         repo,
         {
-            "ref": context.ref,
+            "ref": context.sha,
             "environment": inputs.environment,
             "required_contexts": [],
             "production_environment": False,
