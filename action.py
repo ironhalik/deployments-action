@@ -21,15 +21,18 @@ def main():
 
     status_payload = {
         "state": inputs.state,
-        "log_url": context.server_url + "/" + context.repository + "/actions/runs/" + context.run_id,
+        "log_url": context.server_url
+        + "/"
+        + context.repository
+        + "/actions/runs/"
+        + context.run_id,
         "auto_inactive": True,
     }
-    if hasattr(inputs, 'environment_url'):
+    if hasattr(inputs, "environment_url"):
         status_payload["environment_url"] = inputs.environment_url
 
     create_status(
-        deployment,
-        status_payload,
+        deployment, status_payload,
     )
 
 
