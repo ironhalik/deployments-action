@@ -8,6 +8,10 @@ def main():
     context = ActionsContext("github")
     repo = Github(inputs.access_token).get_repo(context.repository)
 
+    if inputs.state == 'inactive':
+        for deployment in repo.get_deployments(environment=inputs.environment):
+            create_status(deployment, {'state': 'inactive'})
+
     deployment = create_deployment(
         repo,
         {
